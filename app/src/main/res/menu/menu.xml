@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/course"
+        android:title=""
+        android:icon="@drawable/course"/>
+
+    <item
+        android:id="@+id/finance"
+        android:title=""
+        android:icon="@drawable/finance"/>
+
+    <item
+        android:id="@+id/med"
+        android:title=""
+        android:icon="@drawable/med"/>
+
+    <item
+        android:id="@+id/psych"
+        android:title=""
+        android:icon="@drawable/psych"/>
+
+    <item
+        android:id="@+id/faq"
+        android:title=""
+        android:icon="@drawable/faq"/>
+
+</menu>
