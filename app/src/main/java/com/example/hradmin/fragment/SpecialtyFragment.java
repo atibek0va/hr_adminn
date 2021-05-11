@@ -15,7 +15,7 @@ import com.example.hradmin.activities.EmployeesActivity;
 
 public class SpecialtyFragment extends Fragment {
 
-    CardView cv, cv1, cv2, cv3;
+    CardView cv, cv1, cv2, cv3, cv4;
     View view;
 
     @Override
@@ -28,6 +28,7 @@ public class SpecialtyFragment extends Fragment {
         cv1 = view.findViewById(R.id.cv1);
         cv2 = view.findViewById(R.id.cv2);
         cv3 = view.findViewById(R.id.cv3);
+        cv4 = view.findViewById(R.id.cv4);
 
         cv.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -63,7 +63,7 @@ public class EmployeesActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.back){
-            startActivity(new Intent(EmployeesActivity.this, SpecialtyFragment.class));
+            startActivity(new Intent(EmployeesActivity.this, MainPageActivity.class));
         }
     }
 }
