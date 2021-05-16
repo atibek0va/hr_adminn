@@ -1,66 +1,99 @@
 package com.example.hradmin.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hradmin.R;
+import com.example.hradmin.activities.RespondActivity;
+import com.example.hradmin.adapter.QuestionAdapter;
+import com.example.hradmin.adapter.RecyclerItemClickListener;
+import com.example.hradmin.model.Question;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WorkFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class WorkFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public WorkFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WorkFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WorkFragment newInstance(String param1, String param2) {
-        WorkFragment fragment = new WorkFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    View view;
+    RecyclerView recyclerView;
+    ArrayList<Question> questionList;
+    QuestionAdapter questionAdapter;
+    DatabaseReference myRef;
+    FirebaseDatabase database;
+    String userCurrentEmail;
+    FirebaseAuth auth;
+    private RecyclerView.LayoutManager linearLayoutManager, gridLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_work, container, false);
+        view = inflater.inflate(R.layout.fragment_work, container, false);
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        auth = FirebaseAuth.getInstance();
+
+        recyclerView = view.findViewById(R.id.recycleQuestions);
+        questionList = new ArrayList<>();
+        questionAdapter = new QuestionAdapter(getContext(), questionList);
+
+//        questionList.add(new Question("What type of education qualification is needed for getting good job in company", "Asked May 1 ,2021"));
+//        questionList.add(new Question("What type of education qualification is needed for getting good job in company", "Asked May 1 ,2021"));
+//        questionList.add(new Question("What type of education qualification is needed for getting good job in company", "Asked May 1 ,2021"));
+        myRef.child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot questions: snapshot.getChildren()) {
+                        Question question = questions.getValue(Question.class);
+                        questionList.add(question);
+                    }
+                    questionAdapter.notifyDataSetChanged();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(questionAdapter);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, final int pos) {
+                                Intent intent = new Intent(getActivity(), RespondActivity.class);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int pos) {
+
+                            }
+                        })
+        );
+
+        return view;
     }
 }
