@@ -2,9 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/course"
+        android:id="@+id/employees"
         android:title=""
-        android:icon="@drawable/course"/>
+        android:icon="@drawable/psych"/>
+
+    <item
+        android:id="@+id/jobs"
+        android:title=""
+        android:icon="@drawable/vector"/>
 
     <item
         android:id="@+id/finance"
@@ -12,14 +17,9 @@
         android:icon="@drawable/finance"/>
 
     <item
-        android:id="@+id/med"
+        android:id="@+id/courses"
         android:title=""
-        android:icon="@drawable/med"/>
-
-    <item
-        android:id="@+id/psych"
-        android:title=""
-        android:icon="@drawable/psych"/>
+        android:icon="@drawable/course"/>
 
     <item
         android:id="@+id/faq"

@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.hradmin.R;
+import com.example.hradmin.fragment.CoursesFragment;
+import com.example.hradmin.fragment.FinanceFragment;
+import com.example.hradmin.fragment.JobFragment;
+import com.example.hradmin.fragment.QuestionFragment;
 import com.example.hradmin.fragment.SpecialtyFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -57,8 +61,20 @@ public class MainPageActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
             switch (item.getItemId()){
-                case R.id.course:
+                case R.id.employees:
                     selectedFragment = new SpecialtyFragment();
+                    break;
+                case R.id.jobs:
+                    selectedFragment = new JobFragment();
+                    break;
+                case R.id.finance:
+                    selectedFragment = new FinanceFragment();
+                    break;
+                case R.id.courses:
+                    selectedFragment = new CoursesFragment();
+                    break;
+                case R.id.faq:
+                    selectedFragment = new QuestionFragment();
                     break;
             }
 

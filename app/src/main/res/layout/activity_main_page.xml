@@ -27,7 +27,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/bottom_bg"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu"
         tools:layout_editor_absoluteX="0dp" />

@@ -9,9 +9,13 @@ public class Employee {
     String employeeEmail;
     String employeePassword;
 
+    String employeeWorkingHour;
+    String employeeCuratorship;
+    String employeeAddworks;
+
     public  Employee(){}
 
-    public Employee(String employeeName, String employeeSpecial, String employeeIIN, String employeeNumber, String employeeAddress, String employeeEmail, String employeePassword) {
+    public Employee(String employeeName, String employeeSpecial, String employeeIIN, String employeeNumber, String employeeAddress, String employeeEmail, String employeePassword, String employeeWorkingHour, String employeeCuratorship, String employeeAddworks) {
         this.employeeName = employeeName;
         this.employeeSpecial = employeeSpecial;
         this.employeeIIN = employeeIIN;
@@ -19,6 +23,10 @@ public class Employee {
         this.employeeAddress = employeeAddress;
         this.employeeEmail = employeeEmail;
         this.employeePassword = employeePassword;
+
+        this.employeeWorkingHour = employeeWorkingHour;
+        this.employeeCuratorship = employeeCuratorship;
+        this.employeeAddworks = employeeAddworks;
     }
 
     public String getEmployeeName() {
@@ -75,5 +83,28 @@ public class Employee {
 
     public void setEmployeePassword(String employeePassword) {
         this.employeePassword = employeePassword;
+    }
+    public String getEmployeeWorkingHour() {
+        return employeeWorkingHour;
+    }
+
+    public void setEmployeeWorkingHour(String employeeWorkingHour) {
+        this.employeeWorkingHour = employeeWorkingHour;
+    }
+
+    public String getEmployeeCuratorship() {
+        return employeeCuratorship;
+    }
+
+    public void setEmployeeCuratorship(String employeeCuratorship) {
+        this.employeeCuratorship = employeeCuratorship;
+    }
+
+    public String getEmployeeAddworks() {
+        return employeeAddworks;
+    }
+
+    public void setEmployeeAddworks(String employeeAddworks) {
+        this.employeeAddworks = employeeAddworks;
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp">
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/jobName"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Product designer"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="15sp"/>
+
+        <TextView
+            android:id="@+id/jobSalary"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="400$/month"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15sp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/jobTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Time"
+            android:layout_marginLeft="15sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            android:fontFamily="@font/montserrat_semibold"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
