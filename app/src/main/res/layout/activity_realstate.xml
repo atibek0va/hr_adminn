@@ -25,6 +25,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
+        android:id="@+id/abtHealth"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

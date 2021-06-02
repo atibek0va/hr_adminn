@@ -32,20 +32,37 @@ public class HealthcareActivity extends AppCompatActivity {
         setContentView(R.layout.activity_healthcare);
 
         database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
 
         abtHealth = findViewById(R.id.abtHealth);
-//        myRef.child("finance supports").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//                    for(DataSnapshot support: snapshot.getChildren()) {
+        myRef.child("finance supports").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot support: snapshot.getChildren()) {
 //                        String aboutHealthcare = support.child("healthcare").getValue().toString();
 //                        abtHealth.setText(aboutHealthcare);
-//                    }
-//                }
-//            }
+                        String data = snapshot.child("healthcare").getValue(String.class);
+                        abtHealth.setText(data);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        myRef.addValueEventListener(new ValueEventListener() {
 //            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String data = dataSnapshot.child("healthcare").getValue(String.class);
+//                abtHealth.setText(data);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
 //
 //            }
 //        });

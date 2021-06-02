@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HRAdmin">
-        <activity android:name=".activities.RespondActivity"></activity>
+        <activity android:name=".activities.NewManagerActivity"></activity>
+        <activity android:name=".activities.ManagersActivity" />
+        <activity android:name=".activities.EditRealEstateActivity" />
+        <activity android:name=".activities.RespondActivity" />
         <activity android:name=".activities.EditHealthcareActivity" />
         <activity android:name=".activities.RealstateActivity" />
         <activity android:name=".activities.HealthcareActivity" />

@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.hradmin.R;
 import com.example.hradmin.adapter.EmployeeAdapter;
-import com.example.hradmin.fragment.SpecialtyFragment;
 import com.example.hradmin.model.Employee;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class EmployeesActivity extends AppCompatActivity implements View.OnClickListener{
+public class ManagersActivity extends AppCompatActivity implements View.OnClickListener{
 
     Toolbar toolbar;
     ImageView btnBack;
@@ -44,11 +42,8 @@ public class EmployeesActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employees);
-        initViews();
-//        getEmployees();
+        setContentView(R.layout.activity_managers);
     }
-
     public void initViews(){
         toolbar = findViewById(R.id.tb);
         setSupportActionBar(toolbar);
@@ -67,7 +62,7 @@ public class EmployeesActivity extends AppCompatActivity implements View.OnClick
         recyclerView = findViewById(R.id.recycleEmployee);
         employeeList = new ArrayList<>();
         employeeAdapter = new EmployeeAdapter(this, employeeList);
-        myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.child("users").child("managers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -92,9 +87,9 @@ public class EmployeesActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.back){
-            startActivity(new Intent(EmployeesActivity.this, MainPageActivity.class));
+            startActivity(new Intent(ManagersActivity.this, MainPageActivity.class));
         }else if (v.getId() == R.id.btnFloat){
-            startActivity(new Intent(EmployeesActivity.this, NewEmployeeActivity.class));
+            startActivity(new Intent(ManagersActivity.this, NewManagerActivity.class));
         }
     }
 }

@@ -26,6 +26,8 @@ public class RespondActivity extends AppCompatActivity implements View.OnClickLi
     FirebaseAuth auth;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class RespondActivity extends AppCompatActivity implements View.OnClickLi
         initViews();
     }
 
-    public void initViews(){
+    public void initViews(     ){
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
         auth = FirebaseAuth.getInstance();

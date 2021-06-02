@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.hradmin.R;
 import com.example.hradmin.activities.EmployeesActivity;
+import com.example.hradmin.activities.ManagersActivity;
 
 public class SpecialtyFragment extends Fragment {
 
@@ -36,6 +37,12 @@ public class SpecialtyFragment extends Fragment {
                 startActivity(new Intent(getActivity(), EmployeesActivity.class));
             }
         });
+//        cv1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), ManagersActivity.class));
+//            }
+//        });
 
         return view;
     }
